@@ -3,7 +3,7 @@ name: Deploy Website to GitHub Pages
 on:
   push:
     branches:
-      - main  # Trigger workflow on main branch push
+      - main  # Run the workflow when code is pushed to the main branch
 
 jobs:
   deploy:
@@ -24,5 +24,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages
-          folder: .
+          branch: gh-pages   # Deploy to the gh-pages branch
+          folder: .          # Deploy everything from the root directory
+          token: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub's built-in token
